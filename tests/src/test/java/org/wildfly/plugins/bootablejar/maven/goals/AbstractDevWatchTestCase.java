@@ -87,6 +87,7 @@ public abstract class AbstractDevWatchTestCase extends AbstractBootableJarMojoTe
                             cmd.add("pwsh.EXE");
                             cmd.add("-command ");
                             cmd.add("mvn");
+                            cmd.add("' -Dfile.encoding=UTF-8'")
                             prop = "'" + prop + "'";
                         } else {
                             cmd.add("mvn.cmd");
