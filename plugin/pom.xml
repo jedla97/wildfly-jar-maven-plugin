@@ -229,6 +229,7 @@
                     <systemPropertyVariables>
                         <jboss.home>${jboss.home}</jboss.home>
                         <test.jvm.args>${test.jvm.args}</test.jvm.args>
+                        <server.jvm.jpms.args>${server.jvm.jpms.args}</server.jvm.jpms.args>
                     </systemPropertyVariables>
                     <argLine>${client.jvm.jpms.args}</argLine>
                     <redirectTestOutputToFile>${surefire.redirect.to.file}</redirectTestOutputToFile>
