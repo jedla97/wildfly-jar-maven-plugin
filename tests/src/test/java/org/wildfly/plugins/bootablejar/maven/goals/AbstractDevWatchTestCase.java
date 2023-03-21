@@ -110,8 +110,10 @@ public abstract class AbstractDevWatchTestCase extends AbstractBootableJarMojoTe
                     if (parent != null && Files.notExists(parent)) {
                         Files.createDirectories(parent);
                     }
-                    process = new ProcessBuilder(cmd).redirectErrorStream(true)
-                            .redirectOutput(logFile.toFile()).start();
+                    // Map for set java_home variable, because without setting the system java is use
+                    ProcessBuilder processBuilder = new ProcessBuilder(cmd);
+                    processBuilder.environment().put("JAVA_HOME", System.getenv().getOrDefault("JAVA_HOME", ""));
+                    process = processBuilder.redirectErrorStream(true).redirectOutput(logFile.toFile()).start();
                     int r = process.waitFor();
                     if (r != 0) {
                         retCode = r;
