@@ -35,7 +35,7 @@ jobs:
           java-version: ${{ matrix.java }}
       - name: Build and Test on ${{ matrix.java }}
         # Some tests start the server with large default configurations, on Windows CI it has been observed some failure caused by reaching mem limits.
-        run: mvn clean install --debug '-Dtest.jvm.args=-Xms1g -Xmx1g -Dorg.wildfly.logging.skipLogManagerCheck=true' '-Dorg.wildfly.bootable.jar.ci.execution=true'
+        run: mvn help:system clean install '-Dtest.jvm.args=-Xms1g -Xmx1g -Dorg.wildfly.logging.skipLogManagerCheck=true' '-Dorg.wildfly.bootable.jar.ci.execution=true'
       - uses: actions/upload-artifact@v2
         if: failure()
         with:
